@@ -27,7 +27,6 @@ class PartyTests(unittest.TestCase):
                                   follow_redirects=True)
         result = self.client.get("/")
         self.assertIn(b"Party Details", result.data)
-        print("FIXME")
 
 
 class PartyTestsDatabase(unittest.TestCase):
@@ -40,11 +39,11 @@ class PartyTestsDatabase(unittest.TestCase):
         app.config['TESTING'] = True
 
         # Connect to test database (uncomment when testing database)
-        # connect_to_db(app, "postgresql:///testdb")
+        connect_to_db(app, "postgresql:///testdb")
 
         # Create tables and add sample data (uncomment when testing database)
-        # db.create_all()
-        # example_data()
+        db.create_all()
+        example_data()
 
     def tearDown(self):
         """Do at end of every test."""
